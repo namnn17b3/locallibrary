@@ -1,0 +1,43 @@
+doctype html
+html(lang='en')
+  head
+    title='Library'
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel="stylesheet", href="/stylesheets/bootstrap.css")
+    script(src="/js/jquery.js")
+    script(src="/js/bootstrap.js")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    div(class='container-fluid')
+      div(class='row')
+        div(class='col-sm-2')
+          block sidebar
+            ul(class='sidebar-nav')
+              li
+                a(href='/') #{t('home.title')}
+              li
+                a(href='/books') #{t('home.book')}
+              li
+                a(href='/authors') #{t('home.author')}
+              li
+                a(href='/genres') #{t('home.genre')}
+              li
+                a(href='/bookinstances') #{t('home.book_instance')}
+              li
+                hr
+              li
+                a(href='/authors/new') #{t('home.create_author')}
+              li
+                a(href='/genres/new') #{t('home.create_genre')}
+              li
+                a(href='/books/new') #{t('home.create_book')}
+              li
+                a(href='/bookinstances/new') #{t('home.create_book_instance')}
+            ul(class='sidebar-nav')
+              li
+                a(href='?locale=en') #{t('home.english')} | 
+                a(href='?locale=vi') #{t('home.vietnamese')}
+
+        div(class='col-sm-10')
+          block content

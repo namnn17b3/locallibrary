@@ -1,9 +1,17 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
+import { Request, Response, NextFunction } from 'express';
+import { injectable, inject } from 'tsyringe';
+import { BaseRoute } from './base.route';
 
-const router = express.Router();
+@injectable()
+export class RootRoute extends BaseRoute {
+  constructor() {
+    super();
+    this.router = express.Router();
 
-router.get('/', (req: Request, res: Response, next: NextFunction) => {
-    res.send('Hello World');
-});
-
-export default router;
+    // Handle the GET request to "/"
+    this.router.get('/', (req: Request, res: Response, next: NextFunction) => {
+      res.render('index');
+    });
+  }
+}
