@@ -7,6 +7,9 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import logger from 'morgan';
+import i18next from 'i18next';
+import i18nextMiddleware from 'i18next-http-middleware';
+import i18nextBackend from 'i18next-fs-backend';
 import flash from 'connect-flash';
 import { AppDataSource } from './config/database';
 import { Request, Response, NextFunction } from 'express';
@@ -31,6 +34,30 @@ async function main() {
   // Parse URL-encoded and JSON bodies
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
+
+  await i18next
+    .use(i18nextBackend)
+    .use(i18nextMiddleware.LanguageDetector)
+    .init({
+      fallbackLng: 'vi',
+      preload: ['vi', 'en'],
+      supportedLngs: ['vi', 'en'],
+      saveMissing: true,
+      backend: {
+        loadPath: path.join(__dirname, 'locales/{{lng}}/{{ns}}.json'),
+        addPath: path.join(__dirname, 'locales/{{lng}}/{{ns}}.missing.json'),
+      },
+      detection: {
+        order: ['querystring', 'cookie'],
+        caches: ['cookie'],
+        lookupQuerystring: 'locale', //query string on url (?locale=en/vi)
+        lookupCookie: 'locale',
+        ignoreCase: true,
+        cookieSecure: false,
+      },
+    });
+
+  app.use(i18nextMiddleware.handle(i18next));
 
   // Use cookie-parser middleware
   app.use(cookieParser('keyboard cat'));
@@ -60,7 +87,14 @@ async function main() {
           content: '500 Internal Server Error',
         });
         break;
+      case StatusEnum.BAD_REQUEST:
+        res.render('error/error', {
+          title: 'Error 400',
+          content: '400 Bad Request',
+        });
+        break;
       default: // error when render view
+        console.log(err);
         res.render('error', {
           stackTrace: err.stack,
         });

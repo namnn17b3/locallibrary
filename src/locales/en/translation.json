@@ -1,0 +1,33 @@
+{
+  "home": {
+    "title": "Home",
+    "book": "Books",
+    "author": "Authors",
+    "genre": "Genres",
+    "book_instance": "Book Instances",
+    "available_bookinstance": "All Book Instances Available",
+    "create_author": "Create New Author",
+    "create_genre": "Create New Genre",
+    "create_book": "Create New Book",
+    "create_book_instance": "Create New Book Instance",
+    "welcome":"Welcome to Sun Asterisk",
+    "content":"Dynamic content",
+    "record_infor": "The library has the following record counts:",
+    "list_author":"Author List",
+    "list_book": "Book List",
+    "list_genre": "Genre List",
+    "list_bookinstance": "Book Instance List",
+    "no_author":"There are no authors.",
+    "no_book":"There are no books.",
+    "no_bookinstance":"There are no book copies in this library.",
+    "no_genre":"There are no genres.",
+    "english": "english",
+    "vietnamese": "vietnamese",
+    "status": "status",
+    "imprint": "imprint",
+    "titleBook": "Title",
+    "dueBack": "Date due back",
+    "isbn": "ISBN",
+    "summary": "Summary"
+  }
+}

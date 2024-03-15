@@ -1,0 +1,33 @@
+{
+  "home": {
+    "title": "Trang chủ",
+    "book": "Sách",
+    "author": "Tác giả",
+    "genre": "Thể loại",
+    "book_instance": "Bản sao sách",
+    "available_bookinstance": "Tất cả các bản sao có sẵn",
+    "create_author": "Tạo Tác giả mới",
+    "create_genre": "Tạo Thể loại mới",
+    "create_book": "Tạo Sách mới",
+    "create_book_instance": "Tạo Bản sao sách mới",
+    "welcome": "Chào mừng đến với Sun Asterisk",
+    "content": "Nội dung",
+    "record_infor": "Tình trạng thư viện của chúng tôi",
+    "list_author": "Danh sách các tác giả",
+    "list_book": "Danh sách các quyển sách có trong thư viện",
+    "list_genre": "Danh sách các thể loại sách có trong thư viện",
+    "list_bookinstance": "Danh sách các bản sao của sách",
+    "no_author": "Chưa có tác giả nào",
+    "no_book": "Chưa có cuốn sách nào",
+    "no_bookinstance": "Chưa có bản sao của cuốn sách nào",
+    "no_genre": "Chưa có thể loại sách nào",
+    "english": "english",
+    "vietnamese": "vietnamese",
+    "status": "Tình trạng",
+    "imprint": "Ấn bản",
+    "titleBook": "Tên sách",
+    "dueBack": "Ngày trả sách",
+    "isbn": "Số hiệu tiêu chuẩn sách",
+    "summary": "Tóm tắt"
+  }
+}
