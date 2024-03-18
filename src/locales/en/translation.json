@@ -29,5 +29,9 @@
     "dueBack": "Date due back",
     "isbn": "ISBN",
     "summary": "Summary"
+  },
+  "delete": {
+    "author_delete": "Delete Author",
+    "author_update" : "Update Author"
   }
 }

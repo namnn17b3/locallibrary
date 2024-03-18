@@ -29,5 +29,9 @@
     "dueBack": "Ngày trả sách",
     "isbn": "Số hiệu tiêu chuẩn sách",
     "summary": "Tóm tắt"
+  },
+  "delete": {
+    "author_delete": "Xóa tác giả",
+    "author_update": "Cập nhật tác giả"
   }
 }

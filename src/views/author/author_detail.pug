@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+
+  h1 #{t('home.author')}:  #{author.name}
+  p #{author.dateOfBirth} #{author.dateOfDeath ? `| ${author.dateOfDeath}` : ''}
+
+  div(class='author-detail-books')
+
+    h4 #{t('home.book')}: 
+    if author.books.length
+      dl
+        each book in author.books
+          dt
+            a(href=`/books/${book.id}`) #{book.title}
+          dd #{book.summary}
+    else
+      p #{t('home.no_book')}
+
+  hr
+  p
+    a(href=`/authors/delete/${author.id}`) #{t('delete.author_delete')}
+  p
+    a(href=`/authors/update/${author.id}`) #{t('delete.author_update')}

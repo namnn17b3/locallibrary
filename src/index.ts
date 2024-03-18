@@ -81,10 +81,10 @@ async function main() {
   // Error handling middleware
   app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     switch (err.status) {
-      case StatusEnum.INTERNAL_ERROR:
+      case StatusEnum.NOT_FOUND:
         res.render('error/error', {
-          title: 'Error 500',
-          content: '500 Internal Server Error',
+          title: 'Error 404',
+          content: err.message,
         });
         break;
       case StatusEnum.BAD_REQUEST:

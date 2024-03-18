@@ -18,5 +18,9 @@
     "available_bookinstance": "home.available_bookinstance",
     "status": "home.status",
     "submit": "home.submit"
+  },
+  "delete": {
+    "author_delete": "delete.author_delete",
+    "author_update": "delete.author_update"
   }
 }
