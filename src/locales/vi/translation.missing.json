@@ -1,0 +1,22 @@
+{
+  "home": {
+    "title": "home.title",
+    "book": "home.book",
+    "author": "home.author",
+    "genre": "home.genre",
+    "book_instance": "home.book_instance",
+    "create_author": "home.create_author",
+    "create_genre": "home.create_genre",
+    "create_book": "home.create_book",
+    "create_book_instance": "home.create_book_instance",
+    "english": "home.english",
+    "vietnamese": "home.vietnamese",
+    "welcome": "home.welcome",
+    "content": "home.content",
+    "record_infor": "home.record_infor",
+    "bookinstance": "home.bookinstance",
+    "available_bookinstance": "home.available_bookinstance",
+    "status": "home.status",
+    "submit": "home.submit"
+  }
+}
