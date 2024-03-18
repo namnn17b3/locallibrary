@@ -4,6 +4,8 @@ import { injectable, inject } from 'tsyringe';
 import { AuthorRepository } from '../repositories/author.repository';
 import { catchError } from '../decorators/catcherror.decorators';
 import { convertDateTimeToJSDateString } from '../utils/utils';
+import { AppException } from '../exceptions/app.exception';
+import { StatusEnum } from '../enum/status.enum';
 
 @injectable()
 export class AuthorController {
@@ -11,6 +13,13 @@ export class AuthorController {
     @inject(AuthorRepository)
     private readonly authorRepository: AuthorRepository,
   ) {}
+
+  private async findAuthorWithBook(authorId: number) {
+    return await this.authorRepository.findOne({
+      where: { id: authorId },
+      relations: ['books'],
+    });
+  }
 
   // Display list of all Authors.
   @catchError()
@@ -29,6 +38,21 @@ export class AuthorController {
           new Date(author.dateOfDeath),
         ),
       })),
+    });
+  }
+
+  // Detail author
+  @catchError()
+  public async authorDetail(req: Request, res: Response, next: NextFunction) {
+    if (isNaN(+req.params.id))
+      throw new AppException('Author is not exists', StatusEnum.NOT_FOUND);
+
+    const author = await this.findAuthorWithBook(+req.params.id);
+    if (!author)
+      throw new AppException('Author is not exists', StatusEnum.NOT_FOUND);
+
+    res.render('author/author_detail', {
+      author: author,
     });
   }
 }

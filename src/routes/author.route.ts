@@ -18,5 +18,10 @@ export class AuthorRoute extends BaseRoute {
       '/',
       this.authorController.authorList.bind(this.authorController),
     );
+
+    this.router.get(
+      '/:id',
+      this.authorController.authorDetail.bind(this.authorController),
+    );
   }
 }
