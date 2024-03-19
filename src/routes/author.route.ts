@@ -15,6 +15,33 @@ export class AuthorRoute extends BaseRoute {
     this.router = express.Router();
 
     this.router.get(
+      '/update/:id',
+      this.authorController.authorUpdateGet.bind(this.authorController),
+    );
+    this.router.put(
+      '/update/:id',
+      this.authorController.authorUpdatePost.bind(this.authorController),
+    );
+
+    this.router.get(
+      '/delete/:id',
+      this.authorController.authorDeleteGet.bind(this.authorController),
+    );
+    this.router.delete(
+      '/remove/:id',
+      this.authorController.authorDeletePost.bind(this.authorController),
+    );
+
+    this.router.get(
+      '/new',
+      this.authorController.getAuthorCreateForm.bind(this.authorController),
+    );
+    this.router.post(
+      '/store',
+      this.authorController.postAuthorCreateForm.bind(this.authorController),
+    );
+
+    this.router.get(
       '/',
       this.authorController.authorList.bind(this.authorController),
     );

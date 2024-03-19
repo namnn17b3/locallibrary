@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+
+  h1 #{t('delete.author_delete')}: #{author.name}
+  p= author.lifespan
+
+  if authorBooks.length
+
+    p #[strong #{t('delete.author_title')}]
+    div(class='books-of-author')
+      h4 #{t('home.book')}
+      dl
+        each book in authorBooks
+          dt
+            a(href= `/books/${book.id}`) #{book.title}
+          dd #{book.summary}
+
+  else
+    p #{t('delete.author_confirm')}
+
+    form(method='POST' action = `/authors/remove/${author.id}?_method=DELETE`)
+      div.form-group
+        input#authorid.form-control(type='hidden', name='authorid', value=author.id )
+
+      button.btn.btn-primary(type='submit') #{t('delete.remove')}
