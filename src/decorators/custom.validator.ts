@@ -4,6 +4,35 @@ import {
   ValidationArguments,
 } from 'class-validator';
 
+export function IsIntArrayNotEmpty(validationOptions?: ValidationOptions) {
+  return function (object: Object, propertyName: string) {
+    registerDecorator({
+      name: 'isIntArrayNotEmpty',
+      target: object.constructor,
+      propertyName: propertyName,
+      options: validationOptions,
+      validator: {
+        validate(value: any, args: ValidationArguments) {
+          if (!Array.isArray(value) || value.length === 0) {
+            return false;
+          }
+
+          for (const item of value) {
+            if (isNaN(parseInt(item))) {
+              return false;
+            }
+          }
+
+          return true;
+        },
+        defaultMessage(args: ValidationArguments) {
+          return `${args.property} must be a non-empty array of integers`;
+        },
+      },
+    });
+  };
+}
+
 function isDate(dateString: string): boolean {
   const date = new Date(dateString);
   return date instanceof Date && !isNaN(date.getTime());

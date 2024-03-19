@@ -4,12 +4,16 @@ import { injectable, inject } from 'tsyringe';
 import { AuthorRoute } from './author.route';
 import { BookController } from '../controllers/book.controller';
 import { BaseRoute } from './base.route';
+import { BookRoute } from './book.route';
 
 @injectable()
 export class RootRoute extends BaseRoute {
   constructor(
     @inject(AuthorRoute)
     private readonly authorRoute: AuthorRoute,
+
+    @inject(BookRoute)
+    private readonly bookRoute: BookRoute,
 
     @inject(BookController)
     private readonly bookController: BookController,
@@ -24,5 +28,6 @@ export class RootRoute extends BaseRoute {
     });
 
     this.router.use('/authors', this.authorRoute.getRouter());
+    this.router.use('/books', this.bookRoute.getRouter());
   }
 }

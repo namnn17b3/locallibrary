@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+  
+  h1 #{t('home.titleBook')}: #{book.title}
+  p #[strong #{t('home.author')}: ]
+    a(href=`/authors/${book.author.id}`) #{book.author.name}
+  p #[strong #{t('home.summary')}:] #{book.summary}
+  p #[strong #{t('home.isbn')}:] #{book.ISBN}
+  p #[strong #{t('home.genre')}: ]
+    each val, index in genre
+      a(href=`/genres/${val.genre.id}`) #{val.genre.name}
+      if index < genre.length - 1
+        | ,&nbsp;
+
+  div(class='books-of-author')
+    h4 #{t('home.book_instance')}:
+
+    each val in book_instances
+      hr
+      if val.status=='Available'
+        p.text-success #{val.status}
+      else if val.status=='Maintenance'
+        p.text-danger #{val.status}
+      else
+        p.text-warning #{val.status}
+      p #[strong #{t('home.imprint')}:] #{val.imprint}
+      if val.status!='Available'
+        p #[strong #{t('home.dueBack')}:] #{val.dueBack}
+      p #[strong Id: ]
+        a(href=`/bookinstances/${val.id}`) #{val.id}
+
+    else
+      p #{t('home.no_book')}:
+
+  hr
+  p
+    a(href=`/books/delete/${book.id}`) #{t('delete.book_delete')}
+    
+  p
+    a(href=`/books/update/${book.id}`) #{t('delete.book_update')}

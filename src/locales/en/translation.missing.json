@@ -24,8 +24,5 @@
     "genre_confirm": "delete.genre_confirm",
     "bookinstance_confirm": "delete.bookinstance_confirm",
     "bookinstance_delete": "delete.bookinstance_delete"
-  },
-  "form": {
-    "book_update": "form.book_update"
   }
 }
