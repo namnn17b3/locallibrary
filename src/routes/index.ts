@@ -5,6 +5,7 @@ import { AuthorRoute } from './author.route';
 import { BookController } from '../controllers/book.controller';
 import { BaseRoute } from './base.route';
 import { BookRoute } from './book.route';
+import { GenreRoute } from './genre.route';
 
 @injectable()
 export class RootRoute extends BaseRoute {
@@ -17,6 +18,9 @@ export class RootRoute extends BaseRoute {
 
     @inject(BookController)
     private readonly bookController: BookController,
+
+    @inject(GenreRoute)
+    private readonly genreRoute: GenreRoute,
   ) {
     super();
     this.router = express.Router();
@@ -29,5 +33,6 @@ export class RootRoute extends BaseRoute {
 
     this.router.use('/authors', this.authorRoute.getRouter());
     this.router.use('/books', this.bookRoute.getRouter());
+    this.router.use('/genres', this.genreRoute.getRouter());
   }
 }

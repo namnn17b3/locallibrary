@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+
+  h1 #{t('home.genre')}: #{genre.name} 
+
+  div(class='genres-of-book')
+
+    h4 #{t('home.book')}:
+    if books.length
+      dl
+        each book in books
+          dt
+            a(href=`/books/${book.book.id}`) #{book.book.title}
+          dd #{book.book.summary}
+    else
+      p #{t('home.no_book')}:
+  hr
+  p
+    a(href=`/genres/delete/${genre.id}`) #{t('delete.genre_delete')}
+
+  p
+    a(href=`/genres/update/${genre.id}`) #{t('delete.genre_update')}
