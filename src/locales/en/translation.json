@@ -31,7 +31,31 @@
     "summary": "Summary"
   },
   "delete": {
+    "remove": "Delete",
     "author_delete": "Delete Author",
+    "author_title": "Delete the following books before attempting to delete this author.",
+    "author_confirm": "Do you really want to delete this Author?",
     "author_update" : "Update Author"
+  },
+  "form" :{
+    "submit" : "Submit",
+    "first_name": "First Name",
+    "family_name": "Family Name",
+    "date_of_birth": "Date of birth",
+    "date_of_death": "Date of death",
+    "author_select" : "--Please select an author--",
+    "author_create" : "Create Author",
+    "author_update": "Update Author",
+    "first_name_valid": "First name must be specified.",
+    "first_name_char" : "First name has non-alphanumeric characters.",
+    "family_name_valid": "Family name must be specified.",
+    "family_name_char": "Family name has non-alphanumeric characters.",
+    "date_of_birth_valid": "Invalid date of birth",
+    "date_of_death_valid": "Invalid date of death",
+    "author_valid": "Author must not be empty."
+  },
+  "error": {
+    "id_format_int": "Error Format Integer: path variable (id)",
+    "author_not_exists": "Error: Author is not exists"
   }
 }

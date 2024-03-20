@@ -31,7 +31,31 @@
     "summary": "Tóm tắt"
   },
   "delete": {
+    "remove": "Xóa",
     "author_delete": "Xóa tác giả",
+    "author_title": "Xóa những cuốn sách sau trước khi cố gắng xóa tác giả này.",
+    "author_confirm": "Bạn có thực sự muốn xóa tác giả này?",
     "author_update": "Cập nhật tác giả"
+  },
+  "form": {
+    "submit": "Gửi",
+    "first_name": "Tên riêng ",
+    "family_name": "Tên đệm",
+    "date_of_birth": "Ngày sinh",
+    "date_of_death": "Ngày mất",
+    "author_select": "--Vui lòng chọn tác giả dưới đây--",
+    "author_create": "Tạo tác giả",
+    "author_update": "Cập nhật tác giả",
+    "valid_first_name": "Tên phải được chỉ định.",
+    "first_name_char": "Tên có ký tự không phải chữ và số.",
+    "family_name_valid": "Tên gia đình phải được chỉ định.",
+    "family_name_char": "Tên gia đình có các ký tự không phải chữ và số.",
+    "date_of_birth_valid": "Ngày sinh không hợp lệ",
+    "date_of_death_valid": "Ngày mất không hợp lệ",
+    "author_valid": "Tác giả không được để trống."
+  },
+  "error": {
+    "id_format_int": "Error Format Integer: path variable (id)",
+    "author_not_exists": "Error: Author is not exists"
   }
 }

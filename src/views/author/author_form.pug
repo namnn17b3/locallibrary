@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+  h1 #{update ? t('form.author_update') : t('form.author_create')}
+
+  form(method='POST', action = (update? `/authors/update/${author.id}?_method=PUT` : '/authors/store'))
+    div.form-group
+      label(for='first_name') #{t('form.first_name')}:
+      input#first_name.form-control(type='text', placeholder='First name (Christian)' name='first_name' required value=(!author ? '' : author.firstName))
+    div.form-group
+      label(for='family_name') #{t('form.family_name')}:
+      input#family_name.form-control(type='text', placeholder='Family name (Surname)' name='family_name' required value=(!author ? '' : author.familyName))
+    div.form-group
+      label(for='date_of_birth') #{t('form.date_of_birth')}:
+      input#date_of_birth.form-control(type='date' name='date_of_birth' value=(!author ? '' : (author.dateOfBirth ? author.dateOfBirth : '')))
+    div.form-group
+      label(for='date_of_death') #{t('form.date_of_death')}:
+      input#date_of_death.form-control(type='date' name='date_of_death' value=(!author ? '' : (author.dateOfDeath ? author.dateOfDeath : '')))
+    button.btn.btn-primary(type='submit') #{t('form.submit')}
+
+  if errors
+    ul
+      for error in errors
+        li!= error.message

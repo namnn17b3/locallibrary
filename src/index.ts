@@ -16,6 +16,7 @@ import { Request, Response, NextFunction } from 'express';
 import { container } from 'tsyringe';
 import { RootRoute } from './routes';
 import { StatusEnum } from './enum/status.enum';
+import methodOverride from 'method-override';
 
 const app = express();
 const host = process.env.HOST;
@@ -34,6 +35,11 @@ async function main() {
   // Parse URL-encoded and JSON bodies
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
+
+  // middleware for method override
+  // because form html only support GET, POST method not support
+  // PUT, DELETE method
+  app.use(methodOverride('_method'));
 
   await i18next
     .use(i18nextBackend)
@@ -83,18 +89,18 @@ async function main() {
     switch (err.status) {
       case StatusEnum.NOT_FOUND:
         res.render('error/error', {
-          title: 'Error 404',
+          title: `${err.message}`,
           content: err.message,
         });
         break;
       case StatusEnum.BAD_REQUEST:
         res.render('error/error', {
           title: 'Error 400',
-          content: '400 Bad Request',
+          content: `${err.message}`,
         });
         break;
       default: // error when render view
-        console.log(err);
+        console.log('>> error:', err);
         res.render('error', {
           stackTrace: err.stack,
         });

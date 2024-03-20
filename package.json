@@ -30,8 +30,10 @@
     "@types/express-serve-static-core": "^4.17.43",
     "@types/express-session": "^1.18.0",
     "@types/luxon": "^3.4.2",
+    "@types/method-override": "^0.0.35",
     "@types/morgan": "^1.9.9",
     "@types/node": "^20.11.19",
+    "@types/sanitize-html": "^2.11.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.56.0",
     "nodemon": "^3.0.3",
@@ -41,6 +43,8 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.6",
     "debug": "^4.3.4",
@@ -51,10 +55,15 @@
     "express-validator": "^7.0.1",
     "helmet": "^7.1.0",
     "http-errors": "^2.0.0",
+    "i18next": "^23.5.1",
+    "i18next-fs-backend": "^2.3.1",
+    "i18next-http-middleware": "^3.5.0",
     "luxon": "^3.4.4",
+    "method-override": "^3.0.0",
     "morgan": "^1.10.0",
     "mysql2": "^3.9.1",
     "pug": "^3.0.2",
+    "sanitize-html": "^2.12.1",
     "tsyringe": "^4.8.0",
     "typeorm": "^0.3.20"
   }
