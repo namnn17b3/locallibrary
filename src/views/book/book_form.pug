@@ -1,0 +1,44 @@
+extends ../layout
+
+block content
+  h1 #{update ? t('form.book_update') : t('form.book_create')}
+
+  form(method='POST', action = (book ? `/books/update/${book.id}?_method=PUT` : '/books/store'))
+    div.form-group
+      label(for='title') #{t('home.titleBook')}:
+      input#title.form-control(type='text', placeholder='Name of book' name='title' required value=(undefined===book ? '' : book.title) )
+    div.form-group
+      label(for='author') #{t('home.author')}:
+      select#author.form-control(name='author' required)
+        option(value='') #{t('form.author_select')}
+        for author in authors
+          if book
+            if author.id.toString()===book.author.id.toString()
+              option(value=author.id selected) #{author.name}
+            else
+              option(value=author.id) #{author.name}
+          else
+            option(value=author.id) #{author.name}
+    div.form-group
+      label(for='summary') #{t('home.summary')}:
+      textarea#summary.form-control(placeholder='Summary' name='summary' required)= undefined===book ? '' : book.summary
+    div.form-group
+      label(for='isbn') #{t('home.isbn')}:
+      input#isbn.form-control(type='text', placeholder='ISBN13' name='isbn' value=(undefined===book ? '' : book.ISBN) required)
+    div.form-group
+      label #{t('home.genre')}:
+      div
+        for genre in genres
+          div(class='genres')
+            if update
+              input.checkbox-input(type='checkbox', name='genre', id=genre.id, value=genre.id, checked)
+            else
+              input.checkbox-input(type='checkbox', name='genre', id=genre.id, value=genre.id)
+            label(for=genre.id) &nbsp;#{genre.name}
+            br
+    button.btn.btn-primary(type='submit') #{t('form.submit')}
+
+  if errors
+    ul
+      for error in errors
+        li!= error.message

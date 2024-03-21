@@ -30,29 +30,53 @@
     "isbn": "ISBN",
     "summary": "Summary"
   },
-  "delete": {
+  "delete":{
     "remove": "Delete",
     "author_delete": "Delete Author",
     "author_title": "Delete the following books before attempting to delete this author.",
     "author_confirm": "Do you really want to delete this Author?",
-    "author_update" : "Update Author"
+    "book_delete": "Delete Book",
+    "book_title": "Delete the following copies before attempting to delete this Book.",
+    "book_confirm": "Do you really want to delete this Book?",
+    "genre_delete": "Delete Genre",
+    "genre_title": "Delete the following books before attempting to delete this genre.",
+    "genre_confirm": "Do you really want to delete this Genre?",
+    "bookinstance_delete": "Delete Book Instance",
+    "bookinstance_confirm": "Do you really want to delete this BookInstance?",
+    "author_update" : "Update Author",
+    "book_update": "Update Book",
+    "bookinstance_update": "Update Bookinstance",
+    "genre_update": "Update Genre"
   },
-  "form" :{
+  "form": {
     "submit" : "Submit",
     "first_name": "First Name",
     "family_name": "Family Name",
     "date_of_birth": "Date of birth",
     "date_of_death": "Date of death",
     "author_select" : "--Please select an author--",
+    "book_select" : "--Please select a book--",
+    "status_select": "--Please select a status--",
     "author_create" : "Create Author",
     "author_update": "Update Author",
+    "genre_create": "Create Genre",
+    "book_create": "Create Book",
+    "book_update": "Update Book",
+    "instance_create": "Create Book Instance",
     "first_name_valid": "First name must be specified.",
     "first_name_char" : "First name has non-alphanumeric characters.",
     "family_name_valid": "Family name must be specified.",
     "family_name_char": "Family name has non-alphanumeric characters.",
     "date_of_birth_valid": "Invalid date of birth",
     "date_of_death_valid": "Invalid date of death",
-    "author_valid": "Author must not be empty."
+    "title_valid":"Title must not be empty.",
+    "author_valid": "Author must not be empty.",
+    "summary_valid": "Summary must not be empty.",
+    "isbn_valid": "ISBN must not be empty.",
+    "book_valid": "Book must be specified",
+    "imprint_valid": "Imprint must be specified",
+    "dueBack_valid": "Invalid date",
+    "genre_valid": "Genre name must contain at least 3 characters"
   },
   "error": {
     "id_format_int": "Error Format Integer: path variable (id)",

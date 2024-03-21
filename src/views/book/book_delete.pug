@@ -1,0 +1,48 @@
+extends ../layout
+
+block content
+
+  h1 #{t('home.titleBook')}: #{book.title}
+
+  p #[strong #{t('home.author')}: ]
+    a(href=book.author.url) #{book.author.name}
+  p #[strong #{t('home.summary')}:] #{book.summary}
+  p #[strong #{t('home.isbn')}:] #{book.ISBN}
+  p #[strong #{t('home.genre')}: ]
+    each val, index in genre
+      a(href=`/genres/${val.genre.id}`) #{val.genre.name}
+      if index < val.genre.length - 1
+        |,&nbsp;
+
+  hr
+
+  if book_instances.length
+
+    p #[strong #{t('delete.book_title')}]
+
+    div(class='books-of-author')
+
+      h4 #{t('home.book_instance')}
+
+      each book_copy in book_instances
+        hr
+        if book_copy.status=='Available'
+          p.text-success #{book_copy.status}
+        else if book_copy.status=='Maintenance'
+          p.text-danger #{book_copy.status}
+        else
+          p.text-warning #{book_copy.status}
+        p #[strong #{t('home.imprint')}:] #{book_copy.imprint}
+        if book_copy.status!='Available'
+          p #[strong #{t('home.dueBack')}:] #{book_copy.dueBack}
+        p #[strong Id:]
+          a(href=book_copy.url) #{book_copy.id}
+
+  else
+    p #{t('delete.book_confirm')}
+
+    form(method='POST' action = `/books/remove/${book.id}?_method=DELETE`)
+      div.form-group
+        input#id.form-control(type='hidden',name='id: ', value=book.name )
+
+      button.btn.btn-primary(type='submit') #{t('delete.remove')}
