@@ -1,0 +1,13 @@
+extends ../layout
+block content
+  h1 #{update ? t('form.genre_update') : t('form.genre_create')}
+  form(method='POST' action= (genre? `/genres/update/${genre.id}?_method=PUT` : '/genres/store'))
+    div.form-group
+      label(for='name') #{t('home.genre')}:
+      input#name.form-control(type='text' placeholder='Fantasy, Poetry etc.'
+        name='name' required value=(undefined===genre ? '' : genre.name))
+    button.btn.btn-primary(type='submit') #{t('form.submit')}
+    if errors
+      ul
+        for error in errors
+          li!= error.message

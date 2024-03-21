@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  h1 #{t('home.list_genre')}
+
+  if genre_list.length
+    ul
+      each genre in genre_list
+        li
+          a(href=`/genres/${genre.id}`) #{genre.name}
+  else
+    p #{t('home.no_genre')}
