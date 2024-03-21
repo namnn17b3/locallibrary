@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+  h1 #{update ? t('form.instance_update') : t('form.instance_create')}
+
+  form(method='POST', action= (update? `/bookinstances/update/${bookinstance.id}?_method=PUT` : '/bookinstances/store'))
+    div.form-group
+      label(for='book') #{t('home.book')}:
+      select#book.form-control(name='book' required)
+        option(value='') #{t('form.book_select')}
+        for book in book_list
+          if selected_book==book.id
+            option(value=book.id, selected) #{book.title}
+          else
+            option(value=book.id) #{book.title}
+
+    div.form-group
+      label(for='imprint') #{t('home.imprint')}:
+      input#imprint.form-control(type='text' placeholder='Publisher and date information' name='imprint' required value=(undefined===bookinstance ? '' : bookinstance.imprint) )
+    div.form-group
+      label(for='due_back') #{t('home.dueBack')}
+      input#due_back.form-control(type='date' name='due_back' value=(undefined===bookinstance ? '' : bookinstance.dueBack))
+
+    div.form-group
+      label(for='status') #{t('home.status')}:
+      select#status.form-control(name='status' required)
+        option(value='') #{t('form.status_select')}
+        each val in ['Maintenance', 'Available', 'On Loan', 'Reserved']
+          if undefined===bookinstance || bookinstance.status!=val
+            option(value=val)= val
+          else
+            option(value=val selected)= val
+
+    button.btn.btn-primary(type='submit') #{t('form.submit')}
+
+  if errors
+    ul
+      for error in errors
+        li!= error.message

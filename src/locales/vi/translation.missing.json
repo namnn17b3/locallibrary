@@ -26,6 +26,7 @@
     "bookinstance_delete": "delete.bookinstance_delete"
   },
   "form": {
-    "book_update": "form.book_update"
+    "book_update": "form.book_update",
+    "instance_update": "form.instance_update"
   }
 }

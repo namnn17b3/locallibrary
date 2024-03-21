@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import { injectable, inject } from 'tsyringe';
 import { AuthorRoute } from './author.route';
 import { BookController } from '../controllers/book.controller';
+import { BookInstanceRoute } from './bookInstance.route';
 import { BaseRoute } from './base.route';
 import { BookRoute } from './book.route';
 import { GenreRoute } from './genre.route';
@@ -19,6 +20,9 @@ export class RootRoute extends BaseRoute {
     @inject(BookController)
     private readonly bookController: BookController,
 
+    @inject(BookInstanceRoute)
+    private readonly bookInstanceRoute: BookInstanceRoute,
+
     @inject(GenreRoute)
     private readonly genreRoute: GenreRoute,
   ) {
@@ -33,6 +37,7 @@ export class RootRoute extends BaseRoute {
 
     this.router.use('/authors', this.authorRoute.getRouter());
     this.router.use('/books', this.bookRoute.getRouter());
+    this.router.use('/bookinstances', this.bookInstanceRoute.getRouter());
     this.router.use('/genres', this.genreRoute.getRouter());
   }
 }
