@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+
+  h1= title
+
+  p #[strong #{t('delete.bookinstance_confirm')}]
+
+  div(class="bookinstance-delete")
+
+    p #[strong ID]: #{bookinstance.id}
+
+    p #[strong #{t('home.titleBook')}: ]
+      a(href=bookinstance.book.url) #{bookinstance.book.title}
+
+    p #[strong #{t('home.imprint')}:] #{bookinstance.imprint}
+
+    p #[strong #{t('home.status')}: ]
+      if bookinstance.status=='Available'
+        span.text-success #{bookinstance.status}
+      else if bookinstance.status=='Maintenance'
+        span.text-danger #{bookinstance.status}
+      else
+        span.text-warning #{bookinstance.status}
+
+    if bookinstance.status!='Available'
+      p #[strong  #{t('home.dueBack')}:] #{bookinstance.dueBack}
+
+  form(method='POST' action = '/bookinstances/remove?_method=DELETE')
+    div.form-group
+      input#id.form-control(type='hidden',name='id', value=bookinstance.id)
+
+    button.btn.btn-primary(type='submit') #{t('delete.bookinstance_delete')}
